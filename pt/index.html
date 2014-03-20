@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8" />
+<meta name="description" content="Data Science for everyone, open for everyone. Nós somos uma biblioteca de aplicativos para Ciência de Dados, onde você vai encontrar vários algoritmos de mineração de dados e aprendizado de máquina fáceis de usar." />
+<meta name="robots" content="all" />
+<title>Hiveorama :: Data Science for everyone, Open for everyone</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="../css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link rel="shortcut icon" href="../img/favicon.ico" />
+<link href="../css/styles.css" rel="stylesheet" media="screen">
+<script src="http://code.jquery.com/jquery.min.js"></script>
+<script src="../js/commons.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script type="text/javascript">                        
+       var _gaq = _gaq || [];
+       var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+		 _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+       _gaq.push(['_setAccount', 'UA-40114898-1']);
+       _gaq.push(['_trackPageview']);
+     
+       (function() {
+         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+       })();                        
+</script>
+<script>
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+     
+       ga('create', 'UA-40114898-1', 'hiveorama.com');
+       ga('send', 'pageview');
+</script>
+</head>
+<body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) return;
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+         fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+		<header>
+			<div class="navbar navbar-inverse">				
+					<nav class="navbar-inner navbar-fixed-top">
+						<span class="brand"><i class="icon-home icon-white"></i>Hiveorama<img src="../img/logomicro.png" width="27" height="20" alt="Hiveorama" /></span>
+							<ul class="nav">
+							   <li class="dropdown">
+	                       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-th-large icon-white"></i>Aplicativos <b class="caret"></b></a>
+	                       <ul class="dropdown-menu dropdown-inverted">
+	                         <li><a class="textcolor" href="cstats"><img src="../img/beemicro.png" width="20" height="20" alt="Hiveorama :: Statistical Summary app" class="img-circle" /> Resumo estatístico</a></li>
+	                         <li><a class="textcolor" href="clustering"><img src="../img/nautilusmicro.png" width="20" height="20" alt="Hiveorama :: Clustering app" class="img-circle" /> Clusterização</a></li>
+	                         <li><a class="textcolor" href="graphs"><img src="../img/birdsmicro.png" width="20" height="20" alt="Hiveorama :: Graphs app" class="img-circle" /> Grafos</a></li>	                         
+	                       </ul>
+	                     </li>
+	                     <li>
+									<a href="../blog"><i class="icon-comment icon-white"></i>Blog</a>
+								</li>
+								<li class="dropdown">
+	                       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-bullhorn icon-white"></i>Contato <b class="caret"></b></a>
+	                       <ul class="dropdown-menu dropdown-inverted">
+	                         <li><a class="textcolor" href="http://facebook.com/Hiveorama" target="_blank"><img src="../img/facebook_logo.png" width="20" height="20" alt="facebook.com/hiveorama" /> Facebook</a></li>
+	                         <li><a class="textcolor" href="http://twitter.com/hiveorama" target="_blank"><img src="../img/twitter-logo.png" width="20" height="20" alt="@hiveorama" /> Twitter</a></li>	                         
+	                         <li><a class="textcolor" href="mailto:mind@hiveorama.com" target="_blank"><img src="../img/mail.png" width="20" height="20" alt="mind@hiveorama.com" /> E-mail</a></li>
+	                         <li><a class="textcolor" href="https://plus.google.com/102734921213195469400" target="_blank"><img src="../img/gplus.png" width="20" height="20" alt="Google+ Hiveorama" /> Google+</a></li>
+	                         <li><a class="textcolor" href="http://www.linkedin.com/company/hiveorama" target="_blank"><img src="../img/linkedin.png" width="20" height="20" alt="Linkedin Hiveorama" /> Linkedin</a></li>
+	                       </ul>
+	                     </li>	                     						
+							</ul>
+					</nav>
+			</div>
+		</header>		
+		<section>
+			<div class="hero-unit">				
+						<div id="carousel" class="carousel slide">
+						  <ol class="carousel-indicators">
+						    <li data-target="#carousel" data-slide-to="0" class="active"></li>
+						    <li data-target="#carousel" data-slide-to="1"></li>
+						    <li data-target="#carousel" data-slide-to="2"></li>
+						  </ol>			  
+						  <div class="carousel-inner">			  	 
+						    <div class="active item container">								    			    		
+						    		<img class="pull-right" src="../img/hiveoramalogo.png" width="267" height="200" alt="Hiveorama" />					
+									<h1>					
+										<span class="shadow">Hiveorama</span>				
+										<small>
+											<p><strong>Ciência de dados para todos.</strong> Nós somos uma biblioteca de aplicativos para Ciência de dados, onde você vai encontrar algoritmos de mineração de dados e aprendizado de máquina fáceis de usar. Experimente gratuitamente e analise ações, agrupe automaticamente dados ou visualize redes ou grafos!</p>
+										</small>									
+									</h1>
+						    </div>
+						    <div class="item container">
+						         <img class="pull-right" src="../img/hiveoramalogo.png" width="267" height="200" alt="Hiveorama" />
+									<h1>					
+										<span class="shadow">Simples e poderoso</span>				
+										<small>
+											<p><strong>Seja você um cientista ou um analista de dados</strong>, a simplicidade de Hiveorama irá te ajudar em muitas tarefas de exploração de dados, sempre respeitando sua privacidade. Logo iremos suportar vários formatos para entrada e saíde de dados e você poderá salvar suas explorações para uso posterior.</p>
+										</small>									
+									</h1>				    		
+						    </div>
+						    <div class="item container">
+						         <img class="pull-right" src="../img/hiveoramalogo.png" width="267" height="200" alt="Hiveorama" />
+									<h1>					
+										<span class="shadow">Colônia de inteligência</span>				
+										<small>
+											<p><strong>Nós transformamos toda a complexidade da exploração de dados </strong> em passos curtos e simples. Você não precisa analisar qual é o melhor algoritmo ou parâmetros: a comunidade de Hiveorama continuamente "ensina" nossa <i>engine</i> o que se encaixa em cada tipo de dado.</p>
+										</small>									
+									</h1>		
+						    </div>
+						  </div>
+						  <a class="carousel-control left" href="#carousel" data-slide="prev">&lsaquo;</a>
+  					     <a class="carousel-control right" href="#carousel" data-slide="next">&rsaquo;</a>						  
+					</div>						
+			</div>			
+		</section>		
+		<a id="apps"></a>
+		<section class="container">
+			   <h2>Aplicativos</h2>
+			   <div class="container pull-center">
+					<div class="row">
+							<div class="span4">
+								<a href="cstats"><img src="../img/bee.png" width="140" height="140" alt="Hiveorama :: Statistical summary app" class="img-circle imgLink" /></a>
+								<h3>Resumo estatístico</h3>
+								<p>Dados têm uma forma, e você sabe disso. Este aplicativo calcula <strong>desvio padrão</strong>, <strong>quartis</strong> e outras métricas sobre seus dados, além de mostrar sua forma num <strong>diagrama de caixa (ou <i>box-plot</i>)</strong>.</p>
+								<p><a class="btn btn-large btn-danger" href="cstats">Abra o aplicativo!</a></p>
+							</div>
+							<div class="span4">
+								<a href="clustering"><img src="../img/nautilus.png" width="140" height="140" alt="Hiveorama :: Clustering app" class="img-circle imgLink" /></a>
+								<h3>Clusterização</h3>
+								<p>Este aplicativo é útil para agrupar seus dados automaticamente, como criar <strong>grupos</strong> de clientes e enviar e-mails personalizados para cada grupo. Este aplicativo usa o algoritmo <strong>k-means</strong>.
+		</p>
+								<p><a class="btn btn-large btn-default" href="clustering">Abra o aplicativo!</a></p>
+							</div>
+							<div class="span4">
+								<a href="graphs"><img src="../img/birds.png" width="140" height="140" alt="Hiveorama :: Graphs" class="img-circle imgLink" /></a>
+								<h3>Grafos</h3>
+								<p>Todo mundo, de alguma forma, está <strong>conectado</strong>. Melhor: tudo está conectado. <strong>Grafos</strong> são uma ótima ferramenta para visualizar e analizar estas conexões, usando a <strong>Teoria dos grafos.</strong></p>
+								<p><a class="btn btn-large btn-success" href="graphs">Abra o aplicativo!</a></p>
+							</div>
+					</div>
+				</div>
+		</section>
+		<hr class="featurette-divider">
+		<footer>
+				<div class="container">
+						<p>Idioma: <a href="../"><img src="../img/usa.png" width="20" height="20" alt="Inglês" class="imgLink" /></a>&middot<img class="ghost" src="../img/brazil.png" width="20" height="20" alt="Português Brasileiro" /></p>
+				</div>
+				<div class="container">
+							<div class="pull-right">															   
+							   <a href="http://www.facebook.com/Hiveorama" target="_blank"><img src="../img/facebook_logo.png" width="20" height="20" alt="facebook.com/hiveorama" /></a>
+		        				<a href="https://twitter.com/hiveorama" target="_blank"><img src="../img/twitter-logo.png" width="20" height="20" alt="@hiveorama" /></a>
+		        				<a href="mailto:mind@hiveorama.com"><img src="../img/mail.png" width="20" height="20" alt="mind@hiveorama.com" /></a>
+		        				<a href="https://plus.google.com/102734921213195469400" rel="publisher" target="_blank"><img src="../img/gplus.png" width="20" height="20" alt="Google+ Hiveorama" /></a>
+		        				<a href="http://www.linkedin.com/company/hiveorama" target="_blank"><img src="../img/linkedin.png" width="20" height="20" alt="Linkedin Hiveorama" /></a>
+		     				</div>
+						   <div class="pull-right">						   		
+								   <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://hiveorama.com" data-via="hiveorama" data-hashtags="hiveorama">Tweet</a>
+									<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+									<div class="fb-like" data-href="http://hiveorama.com" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="trebuchet ms"></div>									
+						         <div class="g-plusone" data-size="medium"></div>
+						         <script type="text/javascript">
+				                       (function() {
+				                         var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+				                         po.src = 'https://apis.google.com/js/plusone.js';
+				                         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+				                       })();
+				               </script>
+		               </div>							
+							<p>
+									© 2013 Hiveorama - Todos os direitos reservados
+							</p>
+				</div>						
+		</footer>
+</body>
+</html>

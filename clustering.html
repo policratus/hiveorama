@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="description" content="This is useful when you want to cluster data automatically (using k-means), like create groups of customers to send personalized emails to each group. With just some informations like age, monthly income and number of children, you can separate your customers in three groups." />
+<meta name="robots" content="all" />
+<title>Hiveorama :: Data Science for everyone, Open for everyone :: Clustering</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link rel="shortcut icon" href="img/favicon.ico" />
+<link href="css/styles.css" rel="stylesheet" media="screen">
+<script src="http://code.jquery.com/jquery.min.js"></script>
+<script src="js/jquery.csv-0.71.min.js"></script>
+<script src="js/commons.min.js"></script>
+<script src="js/libmining.min.js"></script>
+<script src="js/clustering-data.min.js"></script>
+<script src="js/clustering.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">                        
+       var _gaq = _gaq || [];
+       var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+		 _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+       _gaq.push(['_setAccount', 'UA-40114898-1']);
+       _gaq.push(['_trackPageview']);
+     
+       (function() {
+         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+       })();                        
+</script>
+<script>
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+     
+       ga('create', 'UA-40114898-1', 'hiveorama.com');
+       ga('send', 'pageview');
+</script>
+<script type='text/javascript' src='https://www.google.com/jsapi'></script>
+<script type="text/javascript" >
+        google.load('visualization', '1', {packages:['table']});
+        google.load('visualization', '1', {packages: ['corechart']});
+</script>
+</head>
+<body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) return;
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+         fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+		<header>
+			<div class="navbar navbar-inverse">				
+					<nav class="navbar-inner navbar-fixed-top">
+						<a class="brand" href="index.html"><i class="icon-home icon-white"></i>Hiveorama<img src="img/logomicro.png" width="27" height="20" alt="Hiveorama" /></a>
+							<ul class="nav">
+							   <li class="dropdown">
+	                       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-th-large icon-white"></i>Apps <b class="caret"></b></a>
+	                       <ul class="dropdown-menu dropdown-inverted">
+	                         <li><a class="textcolor" href="cstats"><img src="img/beemicro.png" width="20" height="20" alt="Hiveorama :: Statistical Summary app" class="img-circle" /> Statistical Summary</a></li>	                         
+	                         <li><a class="textcolor" href="graphs"><img src="img/birdsmicro.png" width="20" height="20" alt="Hiveorama :: Graphs app" class="img-circle" /> Graphs</a></li>	                         
+	                       </ul>
+	                     </li>
+	                     <li>
+									<a href="blog"><i class="icon-comment icon-white"></i>Blog</a>
+								</li>
+								<li class="dropdown">
+	                       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-bullhorn icon-white"></i>Feedback <b class="caret"></b></a>
+	                       <ul class="dropdown-menu dropdown-inverted">
+	                         <li><a class="textcolor" href="http://facebook.com/Hiveorama" target="_blank"><img src="img/facebook_logo.png" width="20" height="20" alt="facebook.com/hiveorama" /> Facebook</a></li>
+	                         <li><a class="textcolor" href="http://twitter.com/hiveorama" target="_blank"><img src="img/twitter-logo.png" width="20" height="20" alt="@hiveorama" /> Twitter</a></li>	                         
+	                         <li><a class="textcolor" href="mailto:mind@hiveorama.com" target="_blank"><img src="img/mail.png" width="20" height="20" alt="mind@hiveorama.com" /> E-mail</a></li>
+	                         <li><a class="textcolor" href="https://plus.google.com/102734921213195469400" target="_blank"><img src="img/gplus.png" width="20" height="20" alt="Google+ Hiveorama" /> Google+</a></li>
+	                         <li><a class="textcolor" href="http://www.linkedin.com/company/hiveorama" target="_blank"><img src="img/linkedin.png" width="20" height="20" alt="Linkedin Hiveorama" /> Linkedin</a></li>
+	                       </ul>
+	                     </li>	                     						
+							</ul>
+					</nav>
+			</div>
+		</header>
+		<section class="hero-unit">
+			<div class="container">
+				<img src="img/nautilus.png" width="140" height="140" alt="Hiveorama :: Clustering app" class="img-circle pull-right" />
+				<h1>Clustering</h1>
+				<p class="muted">This is useful when you want to cluster data automatically, like create groups of customers to send personalized emails to each group. With just some informations like age, monthly income and number of children, you can separate your customers in three groups. Test it selecting the sample called "Customers".
+				If you're a data scientist, you can select the well-known Fisher's dataset "Iris flower" and experiment k-means at it's finest.</p>
+			</div>			
+		</section>
+		<hr class="featurette-divider">
+		<section class="container">
+			<ol class="featurette-lead">
+				<li><p>If you want to use the sample, choose it in step 2;</p>
+					 <p>You can load your <a href="#modalCSV" data-toggle="modal">CSV</a> (click for specifications) in step 3;</p>
+					 <p>You can also paste your data on step 4.</p>
+				</li>
+				<li>
+					<p>Choose a sample below:
+						<div class="btn-group" data-toggle="buttons-radio">						  
+						  <button type="button" class="btn" onclick="updateSample('clients');_gaq.push(['_trackEvent', 'Clustering App', 'Click', 'Customers sample']);">Customers</button>
+						  <button type="button" class="btn" onclick="updateSample('iris');_gaq.push(['_trackEvent', 'Clustering App', 'Click', 'Iris Flower Set Sample']);">Iris Flower set</button>
+						</div>
+					</p>
+				</li>
+				<li>
+					If you've a CSV, upload it: <i class="icon-file"></i><input type="file" id="filesClustering" name="files[]" onClick="_gaq.push(['_trackEvent', 'Clustering App', 'Click', 'File selection']);" />					
+				</li>
+				<li>
+					<p>Paste or sample visualization area:</p>
+					<textarea class="textAreaStyle" id="dataarea" onclick="_gaq.push(['_trackEvent', 'Clustering App', 'Click', 'Paste or sample area']);"></textarea>
+				</li>
+				<li>
+					<p>Now, select the number of clusters: 
+							<div class="btn-group" data-toggle="buttons-radio" onclick="_gaq.push(['_trackEvent', 'Clustering App', 'Click', 'Selected a number of clusters']);">						  
+								  <button type="button" class="btn btn-large active" onclick="selectNumberofClusters(2)">2</button>
+								  <button type="button" class="btn btn-large" onclick="selectNumberofClusters(3)">3</button>
+								  <button type="button" class="btn btn-large" onclick="selectNumberofClusters(4)">4</button>
+								  <button type="button" class="btn btn-large" onclick="selectNumberofClusters(5)">5</button>
+								  <button type="button" class="btn btn-large" onclick="selectNumberofClusters(6)">6</button>
+								  <button type="button" class="btn btn-large" onclick="selectNumberofClusters(7)">7</button>
+								  <button type="button" class="btn btn-large" onclick="selectNumberofClusters(8)">8</button>
+								  <button type="button" class="btn btn-large" onclick="selectNumberofClusters(9)">9</button>
+								  <button type="button" class="btn btn-large" onclick="selectNumberofClusters(10)">10</button>
+							</div>
+					</p>
+				</li>
+				<li>
+					<p>Everything set? </p>
+					<p><button class="btn btn-large" type="button" onclick="openClusters();_gaq.push(['_trackEvent', 'Clustering App', 'Click', 'Clicked Go!']);">Go!</button></p>
+				</li>
+			</ol>
+		</section>
+		<hr id="divider" class="featurette-divider" style="visibility: hidden">
+		<section id="resultSection" class="container">			
+      	  <span class="featurette-heading" id="results"></span>
+      	  <p><span id="spanClose" class="pull-right" style="visibility: hidden"><a href="#" onclick="closeResults();"><i class="icon-remove"></i>Close</a></span></p>
+      	  <p></p>
+      	  <span class="featurette-lead" id="titleClusterSel"></span>
+           <select style="visibility: hidden;" id="clusterDrops" onChange="drawTable(this.options.selectedIndex)" onClick="_gaq.push(['_trackEvent', 'Clustering App', 'Click', 'Cluster selection']);">
+           </select>
+          <div id="table_div" class="lead"></div>
+		</section>
+		<div id="modalCSV" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="modalCSVLabel" aria-hidden="true">
+			<div class="modal-header">
+			    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i></button>
+			    <h3 id="modalCSVLabel">CSV restrictions</h3>
+			</div>
+			<div class="modal-body">
+			    <p>The data must follow the format: must have no header, the first column must be a label or class (only text accepted), remaining columns must be integers or decimals and delimiter must be comma (,).</p>
+			</div>
+			<div class="modal-footer">
+			    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+			</div>
+		</div>			
+		<hr class="featurette-divider">
+		<footer>
+				<div class="container">
+						<p>Language: <img src="img/usa.png" width="20" height="20" alt="English" class="ghost" />&middot<a href="/pt/clustering"><img class="imgLink" src="img/brazil.png" width="20" height="20" alt="Portuguese (Brazil)" /></a></p>
+				</div>
+				<div class="container">
+							<div class="pull-right">															   
+							   <a href="http://www.facebook.com/Hiveorama" target="_blank"><img src="img/facebook_logo.png" width="20" height="20" alt="facebook.com/hiveorama" /></a>
+		        				<a href="https://twitter.com/hiveorama" target="_blank"><img src="img/twitter-logo.png" width="20" height="20" alt="@hiveorama" /></a>
+		        				<a href="mailto:mind@hiveorama.com"><img src="img/mail.png" width="20" height="20" alt="mind@hiveorama.com" /></a>
+		        				<a href="https://plus.google.com/102734921213195469400" rel="publisher" target="_blank"><img src="img/gplus.png" width="20" height="20" alt="Google+ Hiveorama" /></a>
+		        				<a href="http://www.linkedin.com/company/hiveorama" target="_blank"><img src="img/linkedin.png" width="20" height="20" alt="Linkedin Hiveorama" /></a>
+		     				</div>
+							<div class="pull-right">						   		
+								   <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://hiveorama.com/clustering" data-via="hiveorama" data-hashtags="hiveorama">Tweet</a>
+									<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+									<div class="fb-like" data-href="http://hiveorama.com" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="trebuchet ms"></div>									
+						         <div class="g-plusone" data-size="medium"></div>
+						         <script type="text/javascript">
+				                       (function() {
+				                         var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+				                         po.src = 'https://apis.google.com/js/plusone.js';
+				                         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+				                       })();
+				               </script>
+		               </div>
+							<p>
+									© 2013 Hiveorama - All Rights Reserved
+							</p>
+				</div>						
+		</footer>
+</body>
+</html>

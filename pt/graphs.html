@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8" />
+<meta name="description" content="Todos, de alguma forma, estão conectados. Melhor: tudo está conectado. Grafos são uma ótima ferramenta para visualizar e analisar tais conexões." />
+<meta name="robots" content="all" />
+<title>Hiveorama :: Data Science for everyone, Open for everyone :: Grafos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="../css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link rel="shortcut icon" href="../img/favicon.ico" />
+<link href="../css/styles.css" rel="stylesheet" media="screen">
+<script src="http://code.jquery.com/jquery.min.js"></script>
+<script src="../js/commons.min.js"></script>
+<script src="../js/graphs.min.js"></script>
+<script type="text/javascript" src="../js/sigma.min.js"></script>
+<script type="text/javascript" src="../js/sigma.parseGexf.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script type="text/javascript">                        
+       var _gaq = _gaq || [];
+       var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+		 _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+       _gaq.push(['_setAccount', 'UA-40114898-1']);
+       _gaq.push(['_trackPageview']);
+     
+       (function() {
+         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+       })();                        
+</script>
+<script>
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+     
+       ga('create', 'UA-40114898-1', 'hiveorama.com');
+       ga('send', 'pageview');
+</script>
+<script type='text/javascript' src='https://www.google.com/jsapi'></script>
+<script type="text/javascript" >
+        google.load('visualization', '1', {packages:['table']});
+</script>
+</head>
+<body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) return;
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+         fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+		<header>
+			<div class="navbar navbar-inverse">				
+					<nav class="navbar-inner navbar-fixed-top">
+						<a class="brand" href="/"><i class="icon-home icon-white"></i>Hiveorama<img src="../img/logomicro.png" width="27" height="20" alt="Hiveorama" /></a>
+							<ul class="nav">
+							   <li class="dropdown">
+	                       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-th-large icon-white"></i>Aplicativos <b class="caret"></b></a>
+	                       <ul class="dropdown-menu dropdown-inverted">
+	                         <li><a class="textcolor" href="cstats"><img src="../img/beemicro.png" width="20" height="20" alt="Hiveorama :: Statistical Summary app" class="img-circle" /> Resumo estatístico</a></li>
+	                         <li><a class="textcolor" href="clustering"><img src="../img/nautilusmicro.png" width="20" height="20" alt="Hiveorama :: Clustering app" class="img-circle" /> Clusterização</a></li>	                         	                         
+	                       </ul>
+	                     </li>
+	                     <li>
+									<a href="../blog"><i class="icon-comment icon-white"></i>Blog</a>
+								</li>
+								<li class="dropdown">
+	                       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-bullhorn icon-white"></i>Feedback <b class="caret"></b></a>
+	                       <ul class="dropdown-menu dropdown-inverted">
+	                         <li><a class="textcolor" href="http://facebook.com/Hiveorama" target="_blank"><img src="../img/facebook_logo.png" width="20" height="20" alt="facebook.com/hiveorama" /> Facebook</a></li>
+	                         <li><a class="textcolor" href="http://twitter.com/hiveorama" target="_blank"><img src="../img/twitter-logo.png" width="20" height="20" alt="@hiveorama" /> Twitter</a></li>	                         
+	                         <li><a class="textcolor" href="mailto:mind@hiveorama.com" target="_blank"><img src="../img/mail.png" width="20" height="20" alt="mind@hiveorama.com" /> E-mail</a></li>
+	                         <li><a class="textcolor" href="https://plus.google.com/102734921213195469400" target="_blank"><img src="../img/gplus.png" width="20" height="20" alt="Google+ Hiveorama" /> Google+</a></li>
+	                         <li><a class="textcolor" href="http://www.linkedin.com/company/hiveorama" target="_blank"><img src="../img/linkedin.png" width="20" height="20" alt="Linkedin Hiveorama" /> Linkedin</a></li>
+	                       </ul>
+	                     </li>	                     						
+							</ul>
+					</nav>
+			</div>
+		</header>
+		<section class="hero-unit">
+			<div class="container">
+				<img src="../img/birds.png" width="140" height="140" alt="Hiveorama :: Graphs app" class="img-circle pull-right" />
+				<h1>Grafos</h1>
+				<p class="muted">Todos, de alguma forma, estão conectados. Melhor: tudo está conectado. Grafos são uma ótima ferramenta para visualizar e analisar tais conexões. Para este aplicativo, você pode experimentar três amostras<a href="#modalSources" data-toggle="modal">*</a>.</p>				
+			</div>			
+		</section>
+		<hr class="featurette-divider">
+		<section class="container">
+			<ol class="featurette-lead">
+				<li><p>Se você deseja usar uma amostra, você deve escolhe-lá no passo 2. Você pode carregar seu arquivo GEXF no passo 3;</p></li>
+				<li>
+					<p>Escolha uma amostra.
+						<div class="btn-group" data-toggle="buttons-radio">						  
+						  <button type="button" class="btn btn-success" onclick="graphSelector('social');_gaq.push(['_trackEvent', 'Graphs App', 'Click', 'Social Networks sample']);">Redes sociais</button>
+						  <button type="button" class="btn btn-success" onclick="graphSelector('java');_gaq.push(['_trackEvent', 'Graphs App', 'Click', 'Java Source Code sample']);">Código-fonte java</button>
+						  <button type="button" class="btn btn-success" onclick="graphSelector('celegans');_gaq.push(['_trackEvent', 'Graphs App', 'Click', 'C. Elegans sample']);">Rede neural do C. Elegans</button>
+						</div>
+					</p>
+				</li>
+				<li>
+					Se você tem um arquivo GEXF, carregue-o: <i class="icon-file"></i><input type="file" id="filesGraph" name="files[]" onClick="_gaq.push(['_trackEvent', 'Graphs App', 'Click', 'Uploaded a GEXF File']);" />					
+				</li>
+			</ol>
+		</section>
+		<section id="resultSection" class="container">
+			<hr id="divider" class="featurette-divider" style="visibility: hidden">
+				<span class="featurette-heading" id="pgraphresults"></span>
+				<p><span id="spanClose" class="pull-right" style="visibility: hidden"><a href="#" onclick="closeResults();"><i class="icon-remove"></i>Close</a></span></p>
+				<span class="featurette-lead" id="pgraphSumm"></span>
+		      <div class="lead" id="graphSumm"></div>
+		      <p></p>
+		      <span class="featurette-lead" id="pNodeProp"></span>
+		      <div class="lead" id="nodeProperties"></div>
+		      <p></p>
+		      <span class="featurette-lead" id="pEdgeProp"></span>                                
+		      <div class="lead" id="edgeProperties"></div>
+		      <p></p>
+		      <span class="featurette-lead" id="pGraphVis"></span>
+				<div id="graphDiv" style="background-color: #FAFAFA"></div>
+		</section>		
+		<div id="modalSources" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="modalSourcesLabel" aria-hidden="true">
+			<div class="modal-header">
+			    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i></button>
+			    <h3 id="modalSourcesLabel">Fonte das amostras</h3>
+			</div>
+			<div class="modal-body">
+				  <li><h6>Redes sociais: Uma rede social hipotética. (Hiveorama.com, 2013);</h6></li>				  
+				  <li><h6>Código-fonte java: A estrutura do código-fonte de um programa em Java (S.Heymann & J.Palmier, 2008);</h6></li>
+				  <li><h6>Rede neural (Caenorhabditis elegans): Grafo representando a rede neural do nematoda Caenorhabditis elegans (D. J. Watts and S. H. Strogatz, Nature 393, 440-442 (1998), J. G. White, E. Southgate, J. N. Thompson, and S. Brenner, Phil. Trans. R. Soc. London 314, 1-340 (1986))</h6></li>
+			</div>
+			<div class="modal-footer">
+			    <button class="btn" data-dismiss="modal" aria-hidden="true">Fechar</button>
+			</div>
+		</div>			
+		<hr class="featurette-divider">		
+		<footer>
+				<div class="container">
+						<p>Idioma: <a href="../graphs"><img src="../img/usa.png" width="20" height="20" alt="Inglês" class="imgLink" /></a>&middot<img class="ghost" src="../img/brazil.png" width="20" height="20" alt="Português Brasileiro" /></p>
+				</div>
+				<div class="container">
+							<div class="pull-right">															   
+							   <a href="http://www.facebook.com/Hiveorama" target="_blank"><img src="../img/facebook_logo.png" width="20" height="20" alt="facebook.com/hiveorama" /></a>
+		        				<a href="https://twitter.com/hiveorama" target="_blank"><img src="../img/twitter-logo.png" width="20" height="20" alt="@hiveorama" /></a>
+		        				<a href="mailto:mind@hiveorama.com"><img src="../img/mail.png" width="20" height="20" alt="mind@hiveorama.com" /></a>
+		        				<a href="https://plus.google.com/102734921213195469400" rel="publisher" target="_blank"><img src="../img/gplus.png" width="20" height="20" alt="Google+ Hiveorama" /></a>
+		        				<a href="http://www.linkedin.com/company/hiveorama" target="_blank"><img src="../img/linkedin.png" width="20" height="20" alt="Linkedin Hiveorama" /></a>
+		     				</div>
+							<div class="pull-right">						   		
+								   <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://hiveorama.com/graphs" data-via="hiveorama" data-hashtags="hiveorama">Tweet</a>
+									<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+									<div class="fb-like" data-href="http://hiveorama.com" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="trebuchet ms"></div>									
+						         <div class="g-plusone" data-size="medium"></div>
+						         <script type="text/javascript">
+				                       (function() {
+				                         var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+				                         po.src = 'https://apis.google.com/js/plusone.js';
+				                         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+				                       })();
+				               </script>
+		               </div>
+							<p>
+									© 2013 Hiveorama - Todos os direitos reservados
+							</p>
+				</div>						
+		</footer>
+</body>
+</html>

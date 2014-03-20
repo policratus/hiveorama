@@ -1,0 +1,9 @@
+.shadow {text-shadow: #FFFFFF 0px 1px 1px;}
+.pull-center {text-align: center}
+.featurette-lead {font-size: 18px; line-height: 1.5;}
+.dropdown-inverted {background-color: #1B1B1B; color: #FFFFFF;}
+.dropdown-inverted .textcolor {color: #FFFFFF;}
+.featurette-heading {font-size: 50px; font-weight: 300; line-height: 1; letter-spacing: -1px;}
+.textAreaStyle {resize: none; width: 100%; height: 200px;}
+.imgLink:hover {opacity: 0.8;}
+.ghost {opacity: 0.3;}
