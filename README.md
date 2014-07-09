@@ -1,4 +1,6 @@
-hiveorama.com
+![Alt text](http://hiveorama.com/img/hiveoramalogo.png "Hiveorama.com")
+=========
+Hiveorama.com
 =========
 <b>Data Science for everyone, open for everyone</b>.
 <br>
