@@ -1,4 +1,4 @@
-![Alt text](http://hiveorama.com/img/hiveoramalogo.png "Hiveorama.com")
+![Alt text](https://github.com/policratus/hiveorama/blob/master/img/hiveoramalogo.png "Hiveorama.com")
 =========
 Hiveorama.com
 =========
